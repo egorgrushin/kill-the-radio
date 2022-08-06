@@ -1,0 +1,78 @@
+.editor {
+	padding: $base-padding * 2;
+	display: flex;
+	flex-flow: column nowrap;
+	@include e('header') {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: $base-padding;
+	}
+	@include e('title') {
+		border-bottom: 1px solid #bbb;
+		padding-bottom: 8px;
+	}
+	@include e('close') {
+		cursor: pointer;
+	}
+	@include e('content') {
+		flex: 1 1 auto;
+	}
+	@include e('error-box') {
+		border: 1px solid $fail-color;
+		padding: $base-padding;
+	}
+	@include e('tools') {
+		margin-top: $base-padding;
+		display: flex;
+		justify-content: flex-end;
+	}
+	@include e('tool') {
+		margin-left: $base-padding * 2;
+	}
+	@include e('edits-wrapper') {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+	}
+	@include e('form-wrapper') {
+		padding: 10px;
+		flex: 1;
+	}
+	@include e('list-wrapper') {
+		padding: 10px;
+		flex: 1;
+		display: flex;
+		flex-flow: column nowrap;
+	}
+	@include e('list') {
+		flex: 1 0 auto;
+		max-height: 459px;
+		border: 1px solid #bbb;
+		padding: 0;
+		overflow-y: scroll;
+		margin-bottom: $base-padding * 2;
+	}
+	@include e('list-item') {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid #bbb;
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+	@include e('list-item-text') {
+		padding: $base-padding;
+	}
+	@include e('list-item-button') {
+		flex: 0;
+		margin: $base-padding;
+	}
+	@include e('list-input') {
+		width: 100%;
+	}
+
+	@include e('message') {
+		height: 250px;
+	}
+}

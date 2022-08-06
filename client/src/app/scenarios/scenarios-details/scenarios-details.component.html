@@ -1,0 +1,41 @@
+<div class="scenarios-details c-page">
+	<div class="c-page__wrapper c-page__wrapper--no-bound">
+		<div class="c-page__header">
+			<div *ngIf="!loadingState.isLoading; else loadingTRef"
+				 [ngSwitch]="editMode"
+				 class="scenarios-details__header">
+				<span>Сценарий:</span>
+				<span *ngSwitchDefault class="scenarios-details__title">
+					<strong>{{scenario?.title}} (id:{{scenario?.id}})</strong>
+					<i (click)="toggleEditMode(true)"
+					   class="fa fa-pencil scenarios-details__edit-icon"></i>
+				</span>
+				<div *ngSwitchCase="true" class="scenarios-details__edit-wrapper">
+					<input [(ngModel)]="scenarioCopy.title"
+						   type="text"
+						   class="c-textbox">
+					<button (click)="updateScenario()"
+							class="c-button c-button c-button--neutral">Сохранить
+					</button>
+					<button (click)="toggleEditMode(false)"
+							class="c-button c-button c-button--fail">Отмена
+					</button>
+				</div>
+			</div>
+			<ng-template #loadingTRef>Загрузка...</ng-template>
+		</div>
+		<div *ngIf="loadingState.error" class="c-error">{{loadingState.error}}</div>
+		<graph [nodes]="states"
+			   [edges]="transitions"
+			   [root]="rootState"
+			   (edit)="edit($event)"
+			   (add)="add($event)"
+			   (remove)="remove($event)"
+			   class="scenarios-details__graph"></graph>
+		<!--<node [node]="rootState"-->
+		<!--[nodes]="states"-->
+		<!--[edges]="transitions"-->
+		<!--(edit)="edit($event)"-->
+		<!--(add)="add($event)"></node>-->
+	</div>
+</div>

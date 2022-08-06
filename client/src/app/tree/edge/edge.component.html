@@ -1,0 +1,31 @@
+<div class="tree">
+	<div *ngIf="edge"
+		 [ngClass]="{'tree__node--terminated': isNextNodeInitial}"
+		 (click)="edit.emit({edge: edge})"
+		 class="tree__node tree__node--edge">
+		<span class="tree__tools">
+			<i class="fa fa-pencil tree__icon tree__icon--edit"></i>
+		</span>
+		<span class="tree__node-title">{{edge.title}}</span>
+	</div>
+	<div [ngClass]="{'tree__children-wrapper--hidden': !_nextNode}"
+		 class="tree__children-wrapper tree__children-wrapper--single">
+		<div class="tree__children">
+			<div class="tree__child">
+				<node *ngIf="_nextNode; else newNodeTRef"
+					  [node]="_nextNode"
+					  [nodes]="nodes"
+					  [edges]="edges"
+					  (edit)="edit.emit($event)"
+					  (add)="add.emit($event)"
+					  class="tree__next-node"></node>
+				<ng-template #newNodeTRef>
+					<div class="tree__tools tree__tools--shifted">
+						<i (click)="add.emit({edge: edge})"
+						   class="fa fa-plus tree__icon tree__icon--add"></i>
+					</div>
+				</ng-template>
+			</div>
+		</div>
+	</div>
+</div>

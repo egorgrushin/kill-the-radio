@@ -1,0 +1,33 @@
+<div class="tree">
+	<div *ngIf="node"
+		 (click)="editFn()"
+		 class="tree__node tree__node--node">
+		<span class="tree__tools">
+			<i *ngIf="node.title !== 'InitialState'"
+			   class="fa fa-pencil tree__icon tree__icon--edit"></i>
+		</span>
+		<span [ngClass]="{'tree__node-title--full-pad': node.title === 'InitialState'}"
+			  class="tree__node-title">{{node.title}}</span>
+	</div>
+	<div [ngClass]="{'tree__children-wrapper--hidden': _rootEdges?.length === 0}"
+		 class="tree__children-wrapper">
+		<div class="tree__children">
+			<div *ngFor="let edge of _rootEdges"
+				 class="tree__child">
+				<edge [edge]="edge"
+					  [edges]="_childEdges"
+					  [nodes]="nodes"
+					  [options]="_options"
+					  (edit)="edit.emit($event)"
+					  (add)="add.emit($event)"
+					  class="tree__next-node"></edge>
+			</div>
+			<div class="tree__child tree__child--hidden">
+				<div class="tree__tools tree__tools--shifted">
+					<i (click)="add.emit({node: node})"
+					   class="fa fa-plus tree__icon tree__icon--add"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

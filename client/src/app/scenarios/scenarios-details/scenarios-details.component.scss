@@ -1,0 +1,27 @@
+.scenarios-details {
+	@include e('header') {
+		display: flex;
+		align-items: center;
+	}
+	@include e('title') {
+		display: flex;
+		align-items: center;
+		margin-left: $base-padding;
+	}
+	@include e('edit-wrapper') {
+		margin-left: $base-padding;
+		font-size: 15px;
+		display: flex;
+		align-items: center;
+		width: 375px;
+		justify-content: space-between;
+	}
+	@include e('edit-icon') {
+		margin-left: $base-padding;
+		font-size: 13px;
+		cursor: pointer;
+		&:hover, &.active {
+		    color: $neutral-color;
+		}
+	}
+}
