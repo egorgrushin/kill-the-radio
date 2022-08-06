@@ -8,7 +8,6 @@
     "build:server": "babel src -s -D -d dist --presets es2015,stage-0",
     "start:server": "cross-env PORT=9001 build:server && node dist",
     "test": "eslint src",
-    // client scripts
     "webpack-server:dev": "webpack-dev-server --config client/config/webpack.dev.js --open --progress --profile --watch --inline --hot",
     "start": "npm run webpack-server:dev",
     "start:remote": "cross-env API_HOST=90 API_PREFIX=api API_PORT=80 SOCKET_PORT=9000 npm run start",
