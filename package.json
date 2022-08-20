@@ -9,6 +9,7 @@
     "start:server": "cross-env PORT=9001 build:server && node dist",
     "test": "eslint src",
     "webpack-server:dev": "webpack-dev-server --config client/config/webpack.dev.js --open --progress --profile --watch --inline --hot",
+    "prestart": "npm run build:server",
     "start": "node server/index.js",
     "start:client": "npm run webpack-server:dev",
     "start:client:remote": "cross-env API_HOST=90 API_PREFIX=api API_PORT=80 SOCKET_PORT=9000 npm run start",
