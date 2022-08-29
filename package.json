@@ -16,7 +16,6 @@
     "start:client:local": "cross-env API_PORT=9001 API_PREFIX=/api npm run start",
     "tslint": "tslint",
     "lint": "npm run tslint \"src/**/*.ts\"",
-    "precommit": "npm run lint",
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && webpack --config client/config/webpack.prod.js  --progress --profile --bail",
     "build:aot": "npm run build:aot:prod",
     "build:dev": "npm run clean:dist && webpack --config client/config/webpack.dev.js --progress --profile",
