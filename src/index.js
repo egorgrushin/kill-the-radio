@@ -77,6 +77,7 @@ app.use(bodyParser.json({
 	limit: config.bodyLimit
 }));
 
+app.use(express.static(path.join(__dirname, '../client')));
 // Storage folder
 app.use('/files', express.static(path.join(__dirname, 'storage')));
 
@@ -89,6 +90,10 @@ initializeDb(db => {
 
 	// api router
 	app.use('/api', api({config, db}));
+
+	app.use('*', (req, res) => {
+		res.sendFile(path.join(__dirname, '../client/index.html'));
+	});
 	app.use((err, req, res, next) => {
 		console.log('err', err);
 		next(err);
